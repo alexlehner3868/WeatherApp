@@ -15,6 +15,7 @@
 		10062FB1245A00BF004EDCCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10062FAF245A00BF004EDCCC /* LaunchScreen.storyboard */; };
 		10062FBC245A00BF004EDCCC /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10062FBB245A00BF004EDCCC /* WeatherTests.swift */; };
 		10062FC7245A00BF004EDCCC /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10062FC6245A00BF004EDCCC /* WeatherUITests.swift */; };
+		10062FD7245A1DE7004EDCCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10062FD6245A1DE7004EDCCC /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		10062FC2245A00BF004EDCCC /* WeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10062FC6245A00BF004EDCCC /* WeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITests.swift; sourceTree = "<group>"; };
 		10062FC8245A00BF004EDCCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10062FD6245A1DE7004EDCCC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		10062FA3245A00BE004EDCCC /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				10062FD6245A1DE7004EDCCC /* ViewController.swift */,
 				10062FA4245A00BE004EDCCC /* AppDelegate.swift */,
 				10062FA6245A00BE004EDCCC /* SceneDelegate.swift */,
 				10062FA8245A00BE004EDCCC /* ContentView.swift */,
@@ -269,6 +272,7 @@
 			files = (
 				10062FA5245A00BE004EDCCC /* AppDelegate.swift in Sources */,
 				10062FA7245A00BE004EDCCC /* SceneDelegate.swift in Sources */,
+				10062FD7245A1DE7004EDCCC /* ViewController.swift in Sources */,
 				10062FA9245A00BE004EDCCC /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
