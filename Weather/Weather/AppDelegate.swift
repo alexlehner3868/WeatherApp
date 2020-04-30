@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Weather
+//  weather
 //
-//  Created by Alexander Lehner on 2020-04-29.
+//  Created by Alexander Lehner on 2020-04-30.
 //  Copyright © 2020 LiveWeatherLove. All rights reserved.
 //
 
