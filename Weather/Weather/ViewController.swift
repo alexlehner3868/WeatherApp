@@ -21,6 +21,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var activityIndicator: NVActivityIndicatorView!
     let locationManager = CLLocationManager()
   
+    //variables for the algorithm given from API call
+    var temperature = 0
+    var tempFeelsLike = 0
+    var humidity = 0
+    var windSpeed = 0
+    var clouds = 0
+    var tempDescription = 0
+    var tempIcon = "";
+    var rainVol = 0
+    var snowVolume = 0
     
     //Connects Items to story board
     @IBOutlet weak var locationLabel: UILabel!
@@ -98,6 +108,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     dateFormatter.dateFormat = "EEEE"
                     self.dayLabel.text = dateFormatter.string(from: date)
 
+                    //changes background color depending on time of day
                     let suffix = iconName.suffix(1)
                     if(suffix == "n"){
                         self.setGreyGradientBackground()
@@ -136,4 +147,5 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
 
 }
+
 
