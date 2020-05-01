@@ -15,7 +15,7 @@ import Foundation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
-    let apiKey = ""
+    let apiKey = "81e6543ba7cb97c6a55d1c8dd855bd61"
     var lat = 11.344533
     var lon = 104.33322
     var activityIndicator: NVActivityIndicatorView!
@@ -79,16 +79,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                    self.activityIndicator.stopAnimating()
                    if let responseStr = response.result.value {
                 let jsonResponse = JSON(responseStr)
+                    
+                //Main dictionary keys
                 let jsonWeather = jsonResponse["weather"].array![0]
                 let jsonTemp = jsonResponse["main"]
+                let jsonWind = jsonResponse["wind"]
+                let jsonClouds = jsonResponse["clouds"]
+                
+                    
+                //Data from "weather" key
+                    
+                //Data from "wind" key
+                self.windSpeed = jsonWind["speed"].intValue
+                
+         
+                    
                 let iconName = jsonWeather["icon"].stringValue
             
-                    //for icon value ensure that we name the images like they are named now cuz thats how api return them
-                let country = jsonResponse["sys"].array![3].stringValue
-                    
+                //Change to F if in the US
+                let country = jsonResponse["sys"]["country"].stringValue
                 var temperature = Int(round(jsonTemp["temp"].doubleValue))
                 var units = "°C"
-                    
                 if(country == "US"){
                     temperature = (temperature * 9 / 5) + 32
                     units = "°F"
