@@ -27,8 +27,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var humidity = 0
     var windSpeed = 0
     var clouds = 0
-    var tempDescription = 0
-    var tempIcon = "";
+    var weatherMainDescription = ""
+    var weatherSubDescription = ""
+    var weatherIcon = ""
+    var weatherID = 0;
     var rainVol = 0
     var snowVolume = 0
     
@@ -78,38 +80,49 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                    response in
                    self.activityIndicator.stopAnimating()
                    if let responseStr = response.result.value {
-                let jsonResponse = JSON(responseStr)
+                    let jsonResponse = JSON(responseStr)
                     
-                //Main dictionary keys
-                let jsonWeather = jsonResponse["weather"].array![0]
-                let jsonTemp = jsonResponse["main"]
-                let jsonWind = jsonResponse["wind"]
-                let jsonClouds = jsonResponse["clouds"]
-                
+                    //Main dictionary keys
+                    let jsonWeather = jsonResponse["weather"].array![0]
+                    let jsonMain = jsonResponse["main"]
+                    let jsonWind = jsonResponse["wind"]
+                    let jsonClouds = jsonResponse["clouds"]
+                    let jsonSys = jsonResponse["sys"]
+                        
+                    //Data from "weather" key
+                    self.weatherMainDescription = jsonWeather["main"].stringValue
+                    self.weatherSubDescription = jsonWeather["description"].stringValue
+                    self.weatherIcon = jsonWeather["icon"].stringValue
+                    self.weatherID = jsonWeather["id"].intValue;
                     
-                //Data from "weather" key
+                    //Data from "main" key
+                    self.temperature = Int(round(jsonMain["temp"].doubleValue))
+                    self.tempFeelsLike = Int(round(jsonMain["temp"].doubleValue))
+                    self.humidity = jsonMain["humidity"].intValue
                     
-                //Data from "wind" key
-                self.windSpeed = jsonWind["speed"].intValue
-                
+                    //Data from "wind" key
+                    self.windSpeed = jsonWind["speed"].intValue
+                    
+                    //Data from "clouds" key
+                    self.clouds = jsonClouds["all"].intValue
          
                     
-                let iconName = jsonWeather["icon"].stringValue
-            
-                //Change to F if in the US
-                let country = jsonResponse["sys"]["country"].stringValue
-                var temperature = Int(round(jsonTemp["temp"].doubleValue))
-                var units = "°C"
-                if(country == "US"){
-                    temperature = (temperature * 9 / 5) + 32
-                    units = "°F"
-                }
+                    
+                
+                    //Change to F if in the US
+                    let country = jsonSys["country"].stringValue
+                    var temperature = self.temperature
+                    var units = "°C"
+                    if(country == "US"){
+                        temperature = (temperature * 9 / 5) + 32
+                        units = "°F"
+                    }
                     //here is where we would get the other pieces of info on weather to calculate what to wear
                 //to see what other info is available put the url in google and replace lat, lon, and api with values
 
                     //updating elements on screen with new values
                     self.locationLabel.text = jsonResponse["name"].stringValue
-                    self.contitionImageView.image = UIImage(named: iconName)
+                    self.contitionImageView.image = UIImage(named: self.weatherIcon)
                     self.conditionLabel.text = jsonWeather["main"].stringValue
                     self.temperatureLabel.text = "\(temperature)"
                     self.unitLabel.text = "\(units)"
@@ -120,7 +133,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     self.dayLabel.text = dateFormatter.string(from: date)
 
                     //changes background color depending on time of day
-                    let suffix = iconName.suffix(1)
+                    let suffix = self.weatherIcon.suffix(1)
                     if(suffix == "n"){
                         self.setGreyGradientBackground()
                     }else{
