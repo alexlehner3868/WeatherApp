@@ -34,6 +34,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var rainVol = 0
     var snowVolume = 0
     
+    //dictionary that sets which clothing item to show
+    var clothing = ["hat": "null", "top": "null", "jacket": "null", "pants": "null", "shoes": "null"]
+    
     //Connects Items to story board
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var conditionLabel: UILabel!
@@ -88,7 +91,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     let jsonWind = jsonResponse["wind"]
                     let jsonClouds = jsonResponse["clouds"]
                     let jsonSys = jsonResponse["sys"]
-                        
+                    let jsonRain = jsonResponse["rain"]
+                    let jsonSnow = jsonResponse["snow"]
+                    
                     //Data from "weather" key
                     self.weatherMainDescription = jsonWeather["main"].stringValue
                     self.weatherSubDescription = jsonWeather["description"].stringValue
@@ -106,8 +111,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     //Data from "clouds" key
                     self.clouds = jsonClouds["all"].intValue
          
+                    //Data from "rain" key
+                    self.rainVol = jsonRain["rain.1h"].intValue
                     
-                    
+                    //Data from "snow" key
+                    self.snowVolume = jsonSnow["snow.1h"].intValue
                 
                     //Change to F if in the US
                     let country = jsonSys["country"].stringValue
@@ -169,7 +177,37 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
            gradientLayer.colors = [topColor, bottomColor]
        }
 
-
+    
+        func whichClothesToWear(){
+            //Thunderstorm
+            if(200 <= weatherID && weatherID <= 299){
+                
+            }
+            //Drizzle
+            else if(300 <= weatherID && weatherID <= 399){
+                
+            }
+            //Rain
+            else if(500 <= weatherID && weatherID <= 599){
+                       
+            }
+            //Snow
+            else if(600 <= weatherID && weatherID <= 699){
+                       
+            }
+            //Atmosphere
+            else if(700 <= weatherID && weatherID <= 799){
+                   
+            }
+            //Clear
+            else if(weatherID == 800){
+                
+            }
+            //Clouds
+            else if(800 < weatherID){
+                
+            }
+        }
 }
 
 
