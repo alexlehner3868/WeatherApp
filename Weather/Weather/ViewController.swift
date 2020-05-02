@@ -35,7 +35,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var snowVolume = 0
     
     //dictionary that sets which clothing item to show
-    var clothing = ["hat": "null", "top": "null", "jacket": "null", "pants": "null", "shoes": "null"]
+    var clothing = ["hat": "null",
+                    "top": "tshirt",
+                    "jacket": "null",
+                    "bottoms": "pants",
+                    "shoes": "sneakers"]
     
     //Connects Items to story board
     @IBOutlet weak var locationLabel: UILabel!
@@ -193,7 +197,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
             //Snow
             else if(600 <= weatherID && weatherID <= 699){
-                       
+                
             }
             //Atmosphere
             else if(700 <= weatherID && weatherID <= 799){
