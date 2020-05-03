@@ -187,6 +187,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 
             }
             //Drizzle
+                //test comment :D
             else if(300 <= weatherID && weatherID <= 399){
                 
             }
