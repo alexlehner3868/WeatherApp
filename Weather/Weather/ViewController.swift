@@ -48,7 +48,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var contitionImageView: UIImageView!
     @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var unitLabel: UILabel! 
+    @IBOutlet weak var unitLabel: UILabel!
     let gradientLayer = CAGradientLayer()
       
 
