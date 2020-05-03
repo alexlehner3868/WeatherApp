@@ -34,12 +34,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var rainVol = 0
     var snowVolume = 0
     
-    //dictionary that sets which clothing item to show
-    var clothing = ["hat": "null",
-                    "top": "tshirt",
-                    "jacket": "null",
-                    "bottoms": "pants",
-                    "shoes": "sneakers"]
+    //sets the limits of what clothing to wear
+    var temperatureLimit:[String:Int] = [
+    "freezing": 0,
+    "cold": 7,
+    "warm": 18,
+    "hot": 26,
+    ]
+   
+    //which clothing shows
+    var hat = ""
+    var top = ""
+    var bottoms = ""
+    var shoes = ""
     
     //Connects Items to story board
     @IBOutlet weak var locationLabel: UILabel!
@@ -182,33 +189,32 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     
         func whichClothesToWear(){
-            //Thunderstorm
-            if(200 <= weatherID && weatherID <= 299){
-                
+            if(self.tempFeelsLike <= temperatureLimit["freezing"]!){
+                self.hat = "winter_hat"
+                self.top = "winter_coat"
+                self.bottoms = "pants"
+            }else if(self.tempFeelsLike <= temperatureLimit["cold"]! && self.tempFeelsLike > temperatureLimit["freezing"]!){
+                self.hat = ""
+                self.top = "winter_coat"
+                self.bottoms = "pants"
+            }else if(self.tempFeelsLike <= temperatureLimit["warm"]! && self.tempFeelsLike > temperatureLimit["cold"]!){
+                self.hat = ""
+                self.top = "long_sleeve_shirt"
+                self.bottoms = "pants"
+            }else if(self.tempFeelsLike <= temperatureLimit["hot"]! && self.tempFeelsLike > temperatureLimit["warm"]!){
+                self.hat = ""
+                self.top = "t_shirt"
+                self.bottoms = "pants"
+            }else if(self.tempFeelsLike > temperatureLimit["hot"]! ){
+                self.hat = "baseball_cap"
+                self.top = "t_shirt"
+                self.bottoms = "shorts"
             }
-            //Drizzle
-            else if(300 <= weatherID && weatherID <= 399){
-                
-            }
-            //Rain
-            else if(500 <= weatherID && weatherID <= 599){
-                       
-            }
-            //Snow
-            else if(600 <= weatherID && weatherID <= 699){
-                
-            }
-            //Atmosphere
-            else if(700 <= weatherID && weatherID <= 799){
-                   
-            }
-            //Clear
-            else if(weatherID == 800){
-                
-            }
-            //Clouds
-            else if(800 < weatherID){
-                
+            
+            if(self.snowVolume > 100){
+                self.shoes = "boots"
+            }else {
+                 self.shoes = "sneakers"
             }
         }
 }
