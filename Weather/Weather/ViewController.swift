@@ -56,6 +56,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var contitionImageView: UIImageView!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
+    
+    //clothing items
+    @IBOutlet weak var hatImageView: UIImageView!
+    @IBOutlet weak var topImageView: UIImageView!
+    @IBOutlet weak var bottomImageView: UIImageView!
+    @IBOutlet weak var shoesImageView: UIImageView!
+    
     let gradientLayer = CAGradientLayer()
       
 
@@ -137,13 +144,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     }
                     //here is where we would get the other pieces of info on weather to calculate what to wear
                 //to see what other info is available put the url in google and replace lat, lon, and api with values
-
+                    
+                    //decide what elements to wear
+                    self.whichClothesToWear()
+                    
                     //updating elements on screen with new values
                     self.locationLabel.text = jsonResponse["name"].stringValue
                     self.contitionImageView.image = UIImage(named: self.weatherIcon)
                     self.conditionLabel.text = jsonWeather["main"].stringValue
                     self.temperatureLabel.text = "\(temperature)"
                     self.unitLabel.text = "\(units)"
+                    
+                    
+                    //set clothing
+                    self.topImageView.image = UIImage(named: self.top)
+                   self.bottomImageView.image = UIImage(named: self.bottoms)
+                    self.shoesImageView.image = UIImage(named: self.shoes)
+                    if(self.hat != ""){
+                         self.hatImageView.image = UIImage(named: self.hat)
+                    }
+                    
+                   
                     
                     let date = Date()
                     let dateFormatter = DateFormatter()
