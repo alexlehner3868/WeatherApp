@@ -20,6 +20,15 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need your location to check weather</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to check weather in your area</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -60,14 +69,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need your location to check weather in your area</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need your location to check weather</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
 </dict>
 </plist>
