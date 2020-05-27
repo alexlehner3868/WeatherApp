@@ -96,9 +96,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let location = locations[0]
         lat = location.coordinate.latitude
         lon = location.coordinate.longitude
-         Alamofire.request("http://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(apiKey)&units=metric").responseJSON {
+        self.activityIndicator.stopAnimating()
+        Alamofire.request("http://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(apiKey)&units=metric").responseJSON {
                    response in
-                   self.activityIndicator.stopAnimating()
+                   
                    if let responseStr = response.result.value {
                     let jsonResponse = JSON(responseStr)
                     
