@@ -80,7 +80,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         //getting user location
         locationManager.requestWhenInUseAuthorization()
         
-        activityIndicator.startAnimating()
+        
          if(CLLocationManager.locationServicesEnabled()){
                    locationManager.delegate = self
                    locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -96,7 +96,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let location = locations[0]
         lat = location.coordinate.latitude
         lon = location.coordinate.longitude
-        self.activityIndicator.stopAnimating()
+        
         Alamofire.request("http://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(apiKey)&units=metric").responseJSON {
                    response in
                    
