@@ -93,10 +93,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     //updating location
      func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
-        lat = location.coordinate.latitude
-        lon = location.coordinate.longitude
         
+        if locations.isEmpty == false {
+            let location = locations[0]
+            lat = location.coordinate.latitude
+            lon = location.coordinate.longitude
+        }
         Alamofire.request("http://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(apiKey)&units=metric").responseJSON {
                    response in
                    
