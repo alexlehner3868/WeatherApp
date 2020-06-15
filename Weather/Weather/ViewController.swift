@@ -79,7 +79,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         //getting user location
         locationManager.requestWhenInUseAuthorization()
-        activityIndicator.startAnimation()
+        activityIndicator.startAnimating()
         
          if(CLLocationManager.locationServicesEnabled()){
                    locationManager.delegate = self
